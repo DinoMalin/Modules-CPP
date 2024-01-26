@@ -5,6 +5,12 @@
 # include <string>
 
 class Contact {
+	private:
+		std::string	firstName;
+		std::string	lastName;
+		std::string	nickname;
+		std::string	phoneNumber;
+		std::string	darkestSecret;
 	public:
 		Contact();
 		void		print(std::ostream &flux) const;
@@ -16,12 +22,6 @@ class Contact {
 		void		setNickname(std::string str);
 		void		setPhoneNumber(std::string str);
 		void		setDarkestSecret(std::string str);
-	private:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickname;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
 };
 
 std::ostream		&operator<<(std::ostream &flux, Contact const& contact);
