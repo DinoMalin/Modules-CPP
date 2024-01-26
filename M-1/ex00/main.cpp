@@ -2,9 +2,10 @@
 
 int main(void)
 {
-	Zombie elizombie;
+	Zombie *elizombie;
 
-	elizombie = *newZombie("Elizombie");
-	elizombie.announce();
+	elizombie = newZombie("Elizombie");
+	elizombie->announce();
 	randomChump("Maximort");
+	delete elizombie;
 }
