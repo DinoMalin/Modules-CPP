@@ -7,9 +7,11 @@ Fixed::Fixed(const Fixed& instance) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = instance;
 }
+
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
+
 Fixed& Fixed::operator=(const Fixed &instance) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->fixedPoint = instance.getRawBits();
