@@ -45,5 +45,5 @@ float Fixed::toFloat(void) const {
 }
 
 int Fixed::toInt(void) const {
-	return this->fixedPoint >> fractionalBits;
+	return this->fixedPoint >> this->fractionalBits;
 }
