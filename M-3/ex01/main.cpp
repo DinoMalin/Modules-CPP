@@ -12,4 +12,5 @@ int main() {
 	ScavTrap clapTwo("Robo");
 	for (int i = 0; i < 3; i++)
 		clapTwo.attack("Steve");
+	clapTwo.guardGate();
 }
