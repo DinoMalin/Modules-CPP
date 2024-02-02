@@ -3,12 +3,13 @@
 #include <iostream>
 
 class Animal {
-	private:
+	protected:
 		std::string type;
 	public:
 		Animal();
 		Animal(const Animal &animal);
-		~Animal();
+		virtual ~Animal();
 		Animal &operator=(const Animal &animal);
 		std::string getType() const;
+		virtual void makeSound() const;
 };

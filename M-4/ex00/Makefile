@@ -1,11 +1,11 @@
-NAME = diamondtrap
+NAME = animals
 
 CC = c++
 CFLAGS =	-Wall -Wextra -Werror \
 			-std=c++98
 
 OBJ_DIR = obj/
-FILES = main ClapTrap ScavTrap FragTrap DiamondTrap
+FILES = main Animal Cat Dog WrongCat WrongAnimal
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
 

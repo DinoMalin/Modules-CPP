@@ -4,6 +4,6 @@
 class Cat : public Animal {
 	public:
 		Cat();
-		Cat(const Cat &Cat);
 		~Cat();
+		void makeSound() const;
 };
