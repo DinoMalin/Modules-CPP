@@ -1,6 +1,9 @@
 #include "Animal.hpp"
 
-Animal::Animal() : type("Animal") {}
+Animal::Animal() : type("Animal") {
+	std::cout << "An animal was born."
+			  << std::endl;
+}
 Animal::Animal(const Animal &animal) {
 	*this = animal;
 	std::cout << "An animal was born."
