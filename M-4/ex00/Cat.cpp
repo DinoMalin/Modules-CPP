@@ -2,11 +2,11 @@
 
 Cat::Cat() : Animal() {
 	this->type = "Cat";
-	std::cout << "A cat was born."
+	std::cout << "A Cat was born."
 			  << std::endl;
 }
 Cat::~Cat() {
-	std::cout << "A cat died."
+	std::cout << "A Cat died."
 			  << std::endl;
 }
 

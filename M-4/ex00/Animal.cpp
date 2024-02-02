@@ -1,16 +1,16 @@
 #include "Animal.hpp"
 
 Animal::Animal() : type("Animal") {
-	std::cout << "An animal was born."
+	std::cout << "An Animal was born."
 			  << std::endl;
 }
 Animal::Animal(const Animal &animal) {
 	*this = animal;
-	std::cout << "An animal was born."
+	std::cout << "An Animal was born."
 			  << std::endl;
 }
 Animal::~Animal() {
-		std::cout << "An animal died."
+		std::cout << "An Animal died."
 			  << std::endl;
 }
 Animal& Animal::operator=(const Animal &animal) {
