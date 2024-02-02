@@ -43,9 +43,5 @@ void ScavTrap::guardGate() {
 		std::cout << "ScavTrap " << this->name
 				  << " is dead, he can't activate Gate keeper anymore."
 				  << std::endl;
-	} else {
-		std::cout << "ScavTrap " << this->name
-			<< " has no more energy, he can't activate Gate keeper anymore."
-			<< std::endl;
 	}
 }
