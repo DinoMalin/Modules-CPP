@@ -11,16 +11,13 @@ Dog::~Dog() {
 	std::cout << "A Dog died."
 			  << std::endl;
 }
-Dog::Dog(const Dog &dog) : Animal() {
-	this->brain = new Brain();
+Dog::Dog(const Dog &dog) {
 	*this = dog;
-	std::cout << "A Dog was born."
-			  << std::endl;
 }
 
 Dog& Dog::operator=(const Dog &dog) {
 	std::cout << "Dog copy !" << std::endl;
-	this->type = dog.getType();
+	this->type = dog.type;
 	delete this->brain;
 	this->brain = new Brain(*dog.brain);
 	return *this;

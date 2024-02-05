@@ -27,4 +27,7 @@ int main()
 	medor.setName("Medor");
 	std::cout << medor.getName() << std::endl;
 	std::cout << sheldon.getName() << std::endl;
+	Dog medeux(medor);
+	medeux.setName("Medeux");
+	std::cout << medeux.getName() << std::endl;
 }
