@@ -8,11 +8,11 @@ class Bureaucrat {
 		int _grade;
 	public:
 		Bureaucrat();
-		Bureaucrat(const Bureaucrat &inst);
+		Bureaucrat(const Bureaucrat &ref);
 		Bureaucrat(std::string name, int grade);
 		~Bureaucrat();
 
-		const Bureaucrat& operator=(const Bureaucrat &inst);
+		const Bureaucrat& operator=(const Bureaucrat &ref);
 
 		const std::string getName() const;
 		int getGrade() const;
@@ -30,4 +30,4 @@ class Bureaucrat {
 		};
 };
 
-std::ostream& operator<<(std::ostream& flux, const Bureaucrat &inst);
+std::ostream& operator<<(std::ostream& flux, const Bureaucrat &ref);
