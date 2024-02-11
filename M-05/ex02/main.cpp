@@ -2,19 +2,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-/* Test :
-
-Execute :
-	PP
-	RR
-	SC
-Execute foiré :
-	PP
-	RR
-	SC
-
-*/
-
 int main() {
 	Bureaucrat steve("Steve", 3);
 	Bureaucrat john("John", 148);
