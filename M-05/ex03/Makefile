@@ -5,7 +5,7 @@ CFLAGS =	-Wall -Wextra -Werror \
 			-std=c++98
 
 OBJ_DIR = obj/
-FILES = main Bureaucrat AForm PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm
+FILES = main Bureaucrat AForm PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm Intern
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
 

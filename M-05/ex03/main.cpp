@@ -1,50 +1,25 @@
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-
-/* Test :
-
-Execute :
-	PP
-	RR
-	SC
-Execute foiré :
-	PP
-	RR
-	SC
-
-*/
+#include "Intern.hpp"
 
 int main() {
-	Bureaucrat steve("Steve", 3);
-	Bureaucrat john("John", 148);
+	Intern intern;
+	Bureaucrat john("John", 1);
+	AForm *sc = intern.makeForm("shrubbery creation", "tree");
+	AForm *rr = intern.makeForm("robotomy request", "Cat");
+	AForm *pp = intern.makeForm("presidential pardon", "Dino");
+	AForm *unknown = intern.makeForm("Nothing", "Dino");
 
-	RobotomyRequestForm rr("Cat");
-	PresidentialPardonForm pp("Dino");
-	ShrubberyCreationForm sc("tree");
 
-	/* Error : Form not signed. */
-	steve.executeForm(rr);
-	steve.executeForm(pp);
-	steve.executeForm(sc);
+	john.signForm(*sc);
+	john.signForm(*rr);
+	john.signForm(*pp);
 
-	/* Error : Grade too low. */
-	john.signForm(rr);
-	john.signForm(pp);
-	john.signForm(sc);
+	john.executeForm(*sc);
+	john.executeForm(*rr);
+	john.executeForm(*pp);
 
-	/* Sucess */
-	steve.signForm(rr);
-	steve.signForm(pp);
-	steve.signForm(sc);
-
-	/* Error : Grade too low.*/
-	john.executeForm(rr);
-	john.executeForm(pp);
-	john.executeForm(sc);
-
-	/* Sucess */
-	steve.executeForm(rr);
-	steve.executeForm(pp);
-	steve.executeForm(sc);
+	delete sc;
+	delete rr;
+	delete pp;
+	if (unknown)
+		delete unknown;
 }
