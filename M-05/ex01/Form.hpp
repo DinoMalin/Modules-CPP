@@ -34,4 +34,4 @@ class Form {
 		};
 };
 
-std::ostream &operator<<(const std::ostream &flux, const Form &ref);
+std::ostream &operator<<(std::ostream &flux, const Form &ref);

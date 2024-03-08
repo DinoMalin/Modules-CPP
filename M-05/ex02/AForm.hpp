@@ -39,4 +39,4 @@ class AForm {
 		};
 };
 
-std::ostream &operator<<(const std::ostream &flux, const AForm &ref);
+std::ostream &operator<<(std::ostream &flux, const AForm &ref);
