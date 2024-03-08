@@ -21,20 +21,16 @@ int Bureaucrat::getGrade() const {return this->_grade;}
 void Bureaucrat::incrementGrade() {
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
-	if (this->_grade - 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
 	this->_grade--;
 }
 
 void Bureaucrat::decrementGrade() {
-	if (this->_grade + 1 < 1)
-		throw Bureaucrat::GradeTooHighException();
 	if (this->_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade++;
 }
 
 std::ostream& operator<<(std::ostream& flux, const Bureaucrat &ref) {
-	flux << ref.getName() << ", bureaucrat grade " << ref.getGrade() << std::endl;
+	flux << ref.getName() << ", bureaucrat grade " << ref.getGrade();
 	return flux;
 }

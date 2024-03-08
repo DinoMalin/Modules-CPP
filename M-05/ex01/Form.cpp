@@ -34,6 +34,6 @@ std::ostream& operator<<(std::ostream& flux, const Form &ref) {
 	flux << "form " << ref.getName() << std::endl
 	<< "is signed : " << ref.getSigned() << std::endl
 	<< "minimum grade to sign : " << ref.getGradeToSign() << std::endl
-	<< "minimum grade to execute : " << ref.getGradeToExecute() << std::endl;
+	<< "minimum grade to execute : " << ref.getGradeToExecute();
 	return flux;
 }
