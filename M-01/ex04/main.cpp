@@ -49,7 +49,8 @@ int main(int ac, char **av) {
 	std::string		newFile(searchAndReplace(file, av[2], av[3]));
 
 	std::ofstream	output;
-	output.open(av[1]);
+	std::string name = std::string(av[1]) + ".replace";
+	output.open(name.c_str());
 	if (!output)
 		return error_handler(2);
 	output << newFile;
