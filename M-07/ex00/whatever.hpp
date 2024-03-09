@@ -1,6 +1,6 @@
 #pragma once
 
-template<typename T>
+template <typename T>
 void swap(T &a, T &b) {
 	T temp;
 
@@ -9,12 +9,12 @@ void swap(T &a, T &b) {
 	b = temp;
 }
 
-template<typename T>
+template <typename T>
 T min(T &a, T &b) {
 	return a < b ? a : b;
 }
 
-template<typename T>
+template <typename T>
 T max(T &a, T &b) {
 	return a > b ? a : b;
 }
