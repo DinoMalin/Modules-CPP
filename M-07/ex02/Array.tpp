@@ -1,3 +1,5 @@
+#include "Array.hpp"
+
 template <typename T>
 Array<T>::Array() {
 	this->len = 0;

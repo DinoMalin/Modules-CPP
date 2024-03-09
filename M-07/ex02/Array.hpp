@@ -1,6 +1,5 @@
 #pragma once
 
-
 template <typename T>
 class Array {
 	private:
@@ -21,5 +20,3 @@ class Array {
 
 		T &operator[](int index);
 };
-
-#include "Array.tpp"

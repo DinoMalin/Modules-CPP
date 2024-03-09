@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Array.hpp"
+#include "Array.tpp"
 
 #define SIZE 5
 
