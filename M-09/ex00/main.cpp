@@ -2,7 +2,7 @@
 
 int main(int ac, char **av) {
 	if (ac != 2) {
-		std::cout << "Usage : ./btc <input>" << std::endl;
+		std::cout << "Usage: ./btc <input>" << std::endl;
 		return 1;
 	}
 	BitcoinExchange be;
