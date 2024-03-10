@@ -9,10 +9,10 @@ const BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &ref) {
 	return *this;
 }
 
-void BitcoinExchange::fillData(std::string file) {
+void BitcoinExchange::fillData(const char *file) {
 	std::ifstream input;
 
-	input.open(file.c_str());
+	input.open(file);
 	if (!input)
 		throw WrongFileException();
 
@@ -22,26 +22,6 @@ void BitcoinExchange::fillData(std::string file) {
 		std::string value = line.substr(line.find(",") + 1, line.length()).c_str();
 		if (date != "date" && line.length())
 			this->data[date] = atof(value.c_str());
-	}
-}
-void BitcoinExchange::fillInput(std::string file) {
-	std::ifstream input;
-
-	input.open(file.c_str());
-	if (!input)
-		throw WrongFileException();
-
-	std::string line;
-	while (getline(input, line)) {
-		std::stringstream stream(line);
-
-		std::string date;
-		std::string value;
-		stream >> date;
-		stream >> value;
-		stream >> value;
-		if (date != "date" && line.length())
-			this->input[date] = value;
 	}
 }
 
@@ -93,18 +73,34 @@ double BitcoinExchange::getValue(std::string date) {
 	return this->data[getString(dateInput)];
 }
 
-void BitcoinExchange::compare() {
-	for (std::map<std::string, std::string>::iterator it(this->input.begin()); it != input.end(); it++) {
+void BitcoinExchange::compare(const char *fileName) {
+	std::ifstream input;
+
+	input.open(fileName);
+	if (!input)
+		throw WrongFileException();
+
+	std::string line;
+	while (getline(input, line)) {
+		std::stringstream ss(line);
+		std::string date;
+		std::string value;
+	
+		ss >> date;
+		ss >> value;
+		ss >> value;
+
+		if (date == "date" || !line.length())
+			continue;
 		try {
-			checkExceptions(it->first, it->second);
-			int coeff(getValue(it->first));
-			std::cout << it->first << " => "
-			<< it->second << " = " << std::atof(it->second.c_str()) * coeff
+			checkExceptions(date, value);
+			double coeff(getValue(date));
+			std::cout << date << " => "
+			<< value << " = " << std::atof(value.c_str()) * coeff
 			<< std::endl;
 		} catch (std::exception &e) {
 			std::cout << "Error: " << e.what() << " => "
-			<< it->first << " | " << it->second
-			<< std::endl;
+			<< line << std::endl;
 		}
 	}
 }

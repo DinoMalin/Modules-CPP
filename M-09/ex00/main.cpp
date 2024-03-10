@@ -1,11 +1,4 @@
-#include <iostream>
-#include <string>
 #include "BitcoinExchange.hpp"
-
-std::string test() {
-	throw std::out_of_range("test");
-	return "oui";
-}
 
 int main(int ac, char **av) {
 	if (ac != 2) {
@@ -14,14 +7,15 @@ int main(int ac, char **av) {
 	}
 	BitcoinExchange be;
 
-	std::string fileName("data.csv");
 	try {
-		be.fillData(fileName);
-		fileName = std::string(av[1]);
-		be.fillInput(fileName);
+		be.fillData("data.csv");
 	} catch (std::exception &e) {
-		std::cout << "Error: " << e.what() << " " << fileName << std::endl;
+		std::cout << "Error: " << e.what() << " data.csv" << std::endl;
 	}
 
-	be.compare();
+	try {
+		be.compare(av[1]);
+	} catch (std::exception &e) {
+		std::cout << "Error: " << e.what() << " " << av[1] << std::endl;
+	}
 }

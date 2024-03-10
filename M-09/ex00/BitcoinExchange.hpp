@@ -10,7 +10,6 @@
 class BitcoinExchange {
 	private:
 		std::map<std::string, double> data;
-		std::map<std::string, std::string> input;
 
 		double	getValue(std::string date);
 		void	checkExceptions(std::string date, std::string value);
@@ -21,9 +20,8 @@ class BitcoinExchange {
 
 		const BitcoinExchange &operator=(const BitcoinExchange &ref);
 
-		void	fillData(std::string file);
-		void	fillInput(std::string file);
-		void	compare();
+		void	fillData(const char *file);
+		void	compare(const char *file);
 
 		class WrongFileException : public std::exception {
 			public:
@@ -31,7 +29,7 @@ class BitcoinExchange {
 		};
 		class WrongDateException : public std::exception {
 			public:
-				const char *what() const throw() {return "Date is incorrectly formated";}
+				const char *what() const throw() {return "Date does not exist";}
 		};
 		class OldDateException : public std::exception {
 			public:
@@ -39,7 +37,7 @@ class BitcoinExchange {
 		};
 		class NegativeValueException : public std::exception {
 			public:
-				const char *what() const throw() {return "Negative number is not correct";}
+				const char *what() const throw() {return "not a positive number";}
 		};
 		class TooLargeException : public std::exception {
 			public:
