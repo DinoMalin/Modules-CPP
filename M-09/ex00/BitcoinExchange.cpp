@@ -25,6 +25,38 @@ void BitcoinExchange::fillData(const char *file) {
 	}
 }
 
+void BitcoinExchange::compare(const char *fileName) {
+	std::ifstream input;
+
+	input.open(fileName);
+	if (!input)
+		throw WrongFileException();
+
+	std::string line;
+	while (getline(input, line)) {
+		std::stringstream ss(line);
+		std::string date;
+		std::string value;
+	
+		ss >> date;
+		ss >> value;
+		ss >> value;
+
+		if (date == "date" || !line.length())
+			continue;
+		try {
+			checkExceptions(date, value);
+			double coeff(getValue(date));
+			std::cout << date << " => "
+			<< value << " = " << std::atof(value.c_str()) * coeff
+			<< std::endl;
+		} catch (std::exception &e) {
+			std::cout << "Error: " << e.what() << " => "
+			<< line << std::endl;
+		}
+	}
+}
+
 void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 	int firstHyphen = date.find("-");
 	int secondHyphen = date.find("-", firstHyphen + 1);
@@ -71,36 +103,4 @@ double BitcoinExchange::getValue(std::string date) {
 	}
 
 	return this->data[getString(dateInput)];
-}
-
-void BitcoinExchange::compare(const char *fileName) {
-	std::ifstream input;
-
-	input.open(fileName);
-	if (!input)
-		throw WrongFileException();
-
-	std::string line;
-	while (getline(input, line)) {
-		std::stringstream ss(line);
-		std::string date;
-		std::string value;
-	
-		ss >> date;
-		ss >> value;
-		ss >> value;
-
-		if (date == "date" || !line.length())
-			continue;
-		try {
-			checkExceptions(date, value);
-			double coeff(getValue(date));
-			std::cout << date << " => "
-			<< value << " = " << std::atof(value.c_str()) * coeff
-			<< std::endl;
-		} catch (std::exception &e) {
-			std::cout << "Error: " << e.what() << " => "
-			<< line << std::endl;
-		}
-	}
 }
