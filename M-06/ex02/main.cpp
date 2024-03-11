@@ -17,4 +17,8 @@ int main() {
     identify(a);
     identify(b);
     identify(c);
+    
+    delete testOne;
+    delete testTwo;
+    delete testThree;
 }
