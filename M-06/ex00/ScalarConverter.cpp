@@ -18,7 +18,7 @@ void ScalarConverter::convert(const std::string &literal) {
 	toFloat = static_cast<float>(atof(literal.c_str()));
 	toDouble = atof(literal.c_str());
 
-	if (std::isprint(toInt)) {
+	if (toInt >= 32 && toInt <= 126) {
 		toChar = "'";
 		toChar += static_cast<char>(toInt);
 		toChar += "'";
