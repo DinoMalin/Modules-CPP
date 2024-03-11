@@ -14,9 +14,9 @@ void ScalarConverter::convert(const std::string &literal) {
 	std::string pseudoLiterals[] = {"-inff", "+inff", "-inf", "+inf", "nan"};
 	bool isPseudoLiteral(false);
 
-	toInt = atoi(literal.c_str());
-	toFloat = static_cast<float>(atof(literal.c_str()));
 	toDouble = atof(literal.c_str());
+	toInt = static_cast<int>(toDouble);
+	toFloat = static_cast<float>(toDouble);
 
 	if (toInt >= 32 && toInt <= 126) {
 		toChar = "'";
