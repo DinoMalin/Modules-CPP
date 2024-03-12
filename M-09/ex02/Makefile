@@ -5,7 +5,7 @@ CFLAGS =	-Wall -Wextra -Werror \
 			-std=c++98
 
 OBJ_DIR = obj/
-FILES = main PmergeMe
+FILES = main PmergeMe utils
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
 
