@@ -24,6 +24,14 @@ class PmergeMe {
 
 		double timeDeq;
 		double timeList;
+
+		pairVector getPairsDeq();
+		pairVector getPairsList();
+		void sortPairs(pairVector &pairs);
+		void insertPairsDeq(pairVector &pairs);
+		void insertPairsList(pairVector &pairs);
+		void sortDeq();
+		void sortList();
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &ref);
@@ -32,16 +40,16 @@ class PmergeMe {
 
 		const PmergeMe &operator=(const PmergeMe &ref);
 
-		pairVector getPairsDeq();
-		pairVector getPairsList();
-		void insertPairsDeq(pairVector &pairs);
-		void insertPairsList(pairVector &pairs);
-		void sortDeq();
-		void sortList();
 		void sort();
 		void displayPerfs();
+
 		class BadInputException : public std::exception {
 			public:
 				const char *what() const throw() {return "Bad input";}
 		};
 };
+
+bool isInt(std::string str);
+bool isDigitStr(std::string str);
+std::vector<int> getInsertionOrder(int size);
+pairVector createPairVector(pairVector::iterator begin, pairVector::iterator end);

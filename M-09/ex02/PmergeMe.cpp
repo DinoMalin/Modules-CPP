@@ -10,20 +10,6 @@ const PmergeMe& PmergeMe::operator=(const PmergeMe &ref) {
 	return *this;
 }
 
-bool isDigitStr(std::string str) {
-	for (int i(0); size_t(i) < str.length(); i++) {
-		if (!isdigit(str[i]))
-			return false;
-	}
-	return true;
-}
-
-bool isInt(std::string num) {
-	if (num.length() > 10 || atol(num.c_str()) > 2147483647)
-		return false;
-	return true;
-}
-
 PmergeMe::PmergeMe(const std::string &input) {
 	std::stringstream ss(input);
 	std::string num;
@@ -88,15 +74,7 @@ pairVector PmergeMe::getPairsList() {
 	return result;
 }
 
-pairVector createPairVector(pairVector::iterator begin, pairVector::iterator end) {
-	pairVector result;
-	for (pairVector::iterator it = begin; it != end; it++) {
-		result.push_back(*it);
-	}
-	return result;
-}
-
-void sortPairs(pairVector &pairs) {
+void PmergeMe::sortPairs(pairVector &pairs) {
 	if (pairs.size() <= 1)
 		return ;
 
@@ -125,30 +103,6 @@ void sortPairs(pairVector &pairs) {
 	while (endIndex < endHalf.size()) {
 		pairs[idx++] = endHalf[endIndex++];
 	}
-}
-
-std::vector<int> getInsertionOrder(int size) {
-	std::vector<int> jacobsthalSeq;
-	jacobsthalSeq.push_back(1);
-	jacobsthalSeq.push_back(3);
-
-	for (int i = 2; i < size; i++) {
-		jacobsthalSeq.push_back(jacobsthalSeq[i - 1] + 2 * jacobsthalSeq[i - 2]);
-	}
-
-	std::vector<int> result;
-	for (int i = 1; i < size; i++) {
-		if (std::find(result.begin(), result.end(), i) != result.end())
-			continue;
-		result.push_back(i);
-		std::vector<int>::iterator jacobsthalIdx(std::lower_bound(jacobsthalSeq.begin(), jacobsthalSeq.end(), i + 1));
-		if (*jacobsthalIdx < size) {
-			result.push_back(*jacobsthalIdx);
-			jacobsthalSeq.erase(jacobsthalIdx);
-		}
-	}
-
-	return result;
 }
 
 void PmergeMe::insertPairsDeq(pairVector &pairs) {
@@ -229,6 +183,7 @@ void PmergeMe::displayPerfs() {
 	<< " with std::deque : " << std::fixed << std::setprecision(2)
 	<< 1000.0 * this->timeDeq / CLOCKS_PER_SEC
 	<< std::endl;
+
 	std::cout << "Time to process a range of " << deq.size()
 	<< " with std::list  : " << std::fixed << std::setprecision(2)
 	<< 1000.0 * this->timeList / CLOCKS_PER_SEC
