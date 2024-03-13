@@ -15,7 +15,7 @@ class Span {
 		const Span &operator=(const Span &ref);
 
 		void addNumber(int n);
-		void addRange(int start, int end);
+		void addRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
 		int shortestSpan();
 		int longestSpan();
 		class NoSpaceLeftException : public std::exception {

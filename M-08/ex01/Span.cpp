@@ -17,11 +17,11 @@ void Span::addNumber(int n) {
 	vect.push_back(n);
 }
 
-void Span::addRange(int start, int end) {
-	if (vect.size() + end - start > max)
+void Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+	if (vect.size() + (end - start) > max)
 		throw RangeTooBigException();
-	for (int i = start; i <= end; i++) {
-		vect.push_back(i);
+	for (std::vector<int>::iterator it = start; it != end; it++) {
+		vect.push_back(*it);
 	}
 }
 

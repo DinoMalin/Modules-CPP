@@ -20,9 +20,14 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	Span sp2 = Span(100000);
+	std::vector<int> vect;
+	for (int i = 0; i < 10000; i++) {
+		vect.push_back(i);
+	}
+
+	Span sp2 = Span(10000);
 	try {
-		sp2.addRange(1, 100000);
+		sp2.addRange(vect.begin(), vect.end());
 		std::cout << "Range added." << std::endl;
 		std::cout << sp2.shortestSpan() << std::endl;
 		std::cout << sp2.longestSpan() << std::endl;
@@ -32,7 +37,7 @@ int main()
 
 	Span sp3 = Span(20);
 	try {
-		sp3.addRange(1, 40);
+		sp3.addRange(vect.begin(), vect.begin() + 30);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
