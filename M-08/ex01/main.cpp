@@ -24,6 +24,8 @@ int main()
 	try {
 		sp2.addRange(1, 20);
 		std::cout << "Range added." << std::endl;
+		std::cout << sp2.shortestSpan() << std::endl;
+		std::cout << sp2.longestSpan() << std::endl;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
