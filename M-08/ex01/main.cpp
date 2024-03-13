@@ -20,9 +20,9 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	Span sp2 = Span(20);
+	Span sp2 = Span(100000);
 	try {
-		sp2.addRange(1, 20);
+		sp2.addRange(1, 100000);
 		std::cout << "Range added." << std::endl;
 		std::cout << sp2.shortestSpan() << std::endl;
 		std::cout << sp2.longestSpan() << std::endl;
