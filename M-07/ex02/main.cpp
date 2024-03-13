@@ -20,4 +20,5 @@ int main() {
 
 	std::cout << "arr[0] = " << arr[0] << std::endl;
 	std::cout << "arrCpy[0] = " << arrCpy[0] << std::endl;
+	std::cout << "size : " << arr.size() << std::endl;
 }
