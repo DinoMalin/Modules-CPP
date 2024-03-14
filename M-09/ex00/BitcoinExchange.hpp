@@ -47,6 +47,10 @@ class BitcoinExchange {
 			public:
 				const char *what() const throw() {return "Empty field";}
 		};
+		class UnexpectedCharacterException : public std::exception {
+			public:
+				const char *what() const throw() {return "Unexpected character";}
+		};
 };
 
 std::string getString(int date);

@@ -42,6 +42,8 @@ void BitcoinExchange::compare(const char *fileName) {
 		ss >> value;
 		ss >> value;
 
+		if (value == "|")
+			value = "";
 		if (date == "date" || !line.length())
 			continue;
 		try {
@@ -65,6 +67,10 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 	int month = std::atoi(date.substr(firstHyphen + 1, secondHyphen).c_str());
 	int day = std::atoi(date.substr(secondHyphen + 1, date.length()).c_str());
 
+	if (year <= 0 || month <= 0 || day <= 0)
+		throw WrongDateException();
+	std::cout << month << std::endl;
+
 	if (!date.length() || !value.length())
 		throw EmptyFieldException();
 
@@ -84,8 +90,23 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 		throw NegativeValueException();
 	if (value.length() > 13 || lvalue > 2147483647)
 		throw TooLargeException();
-}
 
+	for (int i = 0; size_t(i) < value.length(); i++) {
+		if (!isdigit(value[i]) && value[i] != '.')
+			throw UnexpectedCharacterException();
+	}
+
+	int nbMinus(0);
+	for (int i = 0; size_t(i) < date.length(); i++) {
+		if (!isdigit(date[i]) && date[i] != '-')
+			throw UnexpectedCharacterException();
+		if (date[i] == '-')
+			nbMinus++;
+	}
+
+	if (nbMinus != 2)
+		throw UnexpectedCharacterException();
+}
 
 double BitcoinExchange::getValue(std::string date) {
 	bool valid(false);
