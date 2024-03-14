@@ -69,7 +69,6 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 
 	if (year <= 0 || month <= 0 || day <= 0)
 		throw WrongDateException();
-	std::cout << month << std::endl;
 
 	if (!date.length() || !value.length())
 		throw EmptyFieldException();
