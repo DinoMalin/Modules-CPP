@@ -87,7 +87,7 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 	long lvalue = std::atol(value.c_str());
 	if (lvalue < 0)
 		throw NegativeValueException();
-	if (value.length() > 13 || lvalue > 2147483647)
+	if (value.length() > 13 || lvalue > 1000)
 		throw TooLargeException();
 
 	for (int i = 0; size_t(i) < value.length(); i++) {
@@ -103,7 +103,7 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 			nbMinus++;
 	}
 
-	if (nbMinus != 2)
+	if (nbMinus != 1)
 		throw UnexpectedCharacterException();
 }
 
