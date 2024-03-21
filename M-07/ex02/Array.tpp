@@ -20,11 +20,14 @@ Array<T>::Array(const Array &ref) {
 }
 
 template <typename T>
-Array<T>::~Array() {delete [] arr;}
+Array<T>::~Array() {delete [] this->arr;}
 
 template <typename T>
 const Array<T>& Array<T>::operator=(const Array &ref) {
-	for (int i = 0; i < ref.len; i++) {
+	delete [] this->arr;
+	this->len = ref.len;
+	this->arr = new T[this->len];
+	for (int i = 0; i < this->len; i++) {
 		this->arr[i] = ref.arr[i];
 	}
 	return *this;
