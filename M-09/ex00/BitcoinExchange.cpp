@@ -102,8 +102,15 @@ void BitcoinExchange::checkExceptions(std::string date, std::string value) {
 		if (date[i] == '-')
 			nbMinus++;
 	}
+	if (nbMinus != 2)
+		throw UnexpectedCharacterException();
 
-	if (nbMinus != 1)
+	int dot(0);
+	for (int i = 0; size_t(i) < value.length(); i++) {
+		if (value[i] == '.')
+			dot++;
+	}
+	if (dot > 1)
 		throw UnexpectedCharacterException();
 }
 
